@@ -5,27 +5,16 @@ import java.util.Random;
 import java.util.Timer;
 
 import bags.Bag;
-import bags.BlueBag;
 import bags.BrownBag;
-import bags.CyanBag;
 import game.Board;
 import game.enemyCanFire;
-import pots.AtkPot;
-import pots.DefPot;
-import pots.DexPot;
 import pots.HealthPot;
-import pots.LifePot;
-import pots.ManaPot;
 import pots.MpPot;
-import pots.SpdPot;
-import pots.VitPot;
-import pots.WisPot;
 import sprite.Player;
 import sprite.Projectile;
 
 public class ZombieArcher extends Enemy{
 	
-	private final double ANGLE = Math.PI/6.0;
 	private Random rand;
 
     private Timer timer;

@@ -1,15 +1,8 @@
 package enemies;
 
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import equipment.Item;
 import game.Board;
-import game.enemyCanFire;
-import pots.Pot;
 import sprite.Player;
 import sprite.Sprite;
 

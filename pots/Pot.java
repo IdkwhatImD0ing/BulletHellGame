@@ -1,8 +1,6 @@
 package pots;
 
-import equipment.Item;
 import game.Board;
-import sprite.Player;
 import sprite.Sprite;
 
 /**Main Pot class

@@ -1,6 +1,5 @@
 package bags;
 
-import java.awt.Image;
 import java.util.Timer;
 import java.util.TimerTask;
 

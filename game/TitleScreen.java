@@ -21,8 +21,6 @@ public class TitleScreen extends JPanel implements ActionListener{
 
 	
 
-	private int boardX;
-	private int boardY;
 	private Application jFrame;
 	private JButton startButton;
 	private JButton exitButton;
@@ -33,8 +31,6 @@ public class TitleScreen extends JPanel implements ActionListener{
 	 * @param frame frame this component is in
 	 */
 	public TitleScreen(int x, int y, Application frame) {
-		boardX = x;
-		boardY = y;
 		jFrame = frame;
 		initScreen();
 		

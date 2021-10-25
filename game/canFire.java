@@ -2,7 +2,6 @@ package game;
 
 
 import java.awt.MouseInfo;
-import java.awt.Toolkit;
 import java.awt.geom.Point2D;
 import java.util.TimerTask;
 
@@ -18,7 +17,6 @@ public class canFire extends TimerTask{
 	
 
 	private Player player;
-	private Board board;
 	private JFrame jFrame;
 	
 	/**Constructor
@@ -27,7 +25,6 @@ public class canFire extends TimerTask{
 	 */
 	public canFire(Player player, Board board) {
 		this.player = player;
-		this.board = board;
 		jFrame = board.getJFrame();
 	}
 	
