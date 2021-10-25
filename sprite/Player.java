@@ -15,6 +15,8 @@ import equipment.Item;
 import game.Board;
 import game.canFire;
 import game.regenStats;
+import pots.HealthPot;
+import pots.MpPot;
 import pots.Pot;
 
 /**Base class for players
@@ -60,6 +62,9 @@ public class Player extends Sprite {
     protected int maximumHealth;
     protected int maximumMana;
     protected int maxExp = 100;
+    
+    private int healthPots;
+    private int manaPots;
 	
 	private Timer fireTimer;
 	private Timer regenTimer;
@@ -105,6 +110,8 @@ public class Player extends Sprite {
 		this.leftImage = leftImage;
 		this.downImage = downImage;
 		this.upImage = upImage;
+		healthPots = 0;
+		manaPots = 0;
 		equipment = new HashMap<String, Item>(4);
 		movingRightImage = movingRight;
 		movingLeftImage = movingLeft;
@@ -410,9 +417,16 @@ public class Player extends Sprite {
 						return;
 					}
 					else {
-						if (addToInventory(bag.getItem(0)) == 1) {
-							bag.removeItem(0);
+						if(bag.getItem(0) instanceof HealthPot && healthPots <= 6) {
+							healthPots ++;
 						}
+						else if(bag.getItem(0) instanceof MpPot && manaPots <= 6) {
+							manaPots ++;
+						}
+						else{
+							addToInventory(bag.getItem(0));
+						}
+						bag.removeItem(0);
 					}
 					
 				}
@@ -421,9 +435,16 @@ public class Player extends Sprite {
 						return;
 					}
 					else {
-						if (addToInventory(bag.getItem(1)) == 1) {
-							bag.removeItem(1);
+						if(bag.getItem(1) instanceof HealthPot && healthPots <= 6) {
+							healthPots ++;
 						}
+						else if(bag.getItem(1) instanceof MpPot && manaPots <= 6) {
+							manaPots ++;
+						}
+						else{
+							addToInventory(bag.getItem(1));
+						}
+						bag.removeItem(1);
 					}
 				}
 				else if (e.getX() > 1740 && e.getX() < 1790 && e.getY() > 800 && e.getY() < 850) {
@@ -431,9 +452,16 @@ public class Player extends Sprite {
 						return;
 					}
 					else {
-						if (addToInventory(bag.getItem(2)) == 1) {
-							bag.removeItem(2);
+						if(bag.getItem(2) instanceof HealthPot && healthPots <= 6) {
+							healthPots ++;
 						}
+						else if(bag.getItem(2) instanceof MpPot && manaPots <= 6) {
+							manaPots ++;
+						}
+						else{
+							addToInventory(bag.getItem(2));
+						}
+						bag.removeItem(2);
 					}
 				}
 				else if (e.getX() > 1790 && e.getX() < 1840 && e.getY() > 800 && e.getY() < 850) {
@@ -441,29 +469,45 @@ public class Player extends Sprite {
 						return;
 					}
 					else {
-						if (addToInventory(bag.getItem(3)) == 1) {
-							bag.removeItem(3);
+						if(bag.getItem(3) instanceof HealthPot && healthPots <= 6) {
+							healthPots ++;
 						}
+						else if(bag.getItem(3) instanceof MpPot && manaPots <= 6) {
+							manaPots ++;
+						}
+						else{
+							addToInventory(bag.getItem(3));
+						}
+						bag.removeItem(3);
 					}
 				}
 				else if (e.getX() > 1640 && e.getX() < 1690 && e.getY() > 850 && e.getY() < 900) {
-					if (bag.getItem(4) == null) {
-						return;
+					if(bag.getItem(4) instanceof HealthPot && healthPots <= 6) {
+						healthPots ++;
 					}
-					else {
-						if (addToInventory(bag.getItem(4)) == 1) {
-							bag.removeItem(4);
-						}
+					else if(bag.getItem(4) instanceof MpPot && manaPots <= 6) {
+						manaPots ++;
 					}
+					else{
+						addToInventory(bag.getItem(4));
+					}
+					bag.removeItem(4);
 				}
 				else if (e.getX() > 1690 && e.getX() < 1740 && e.getY() > 850 && e.getY() < 900) {
 					if (bag.getItem(5) == null) {
 						return;
 					}
 					else {
-						if (addToInventory(bag.getItem(5)) == 1) {
-							bag.removeItem(5);
+						if(bag.getItem(5) instanceof HealthPot && healthPots <= 6) {
+							healthPots ++;
 						}
+						else if(bag.getItem(5) instanceof MpPot && manaPots <= 6) {
+							manaPots ++;
+						}
+						else{
+							addToInventory(bag.getItem(5));
+						}
+						bag.removeItem(5);
 					}
 				}
 				else if (e.getX() > 1740 && e.getX() < 1790 && e.getY() > 850 && e.getY() < 900) {
@@ -471,9 +515,16 @@ public class Player extends Sprite {
 						return;
 					}
 					else {
-						if (addToInventory(bag.getItem(6)) == 1) {
-							bag.removeItem(6);
+						if(bag.getItem(6) instanceof HealthPot && healthPots <= 6) {
+							healthPots ++;
 						}
+						else if(bag.getItem(6) instanceof MpPot && manaPots <= 6) {
+							manaPots ++;
+						}
+						else{
+							addToInventory(bag.getItem(6));
+						}
+						bag.removeItem(6);
 					}
 				}
 				else if (e.getX() > 1790 && e.getX() < 1840 && e.getY() > 850 && e.getY() < 900) {
@@ -481,9 +532,16 @@ public class Player extends Sprite {
 						return;
 					}
 					else {
-						if (addToInventory(bag.getItem(7)) == 1) {
-							bag.removeItem(7);
+						if(bag.getItem(7) instanceof HealthPot && healthPots <= 6) {
+							healthPots ++;
 						}
+						else if(bag.getItem(7) instanceof MpPot && manaPots <= 6) {
+							manaPots ++;
+						}
+						else{
+							addToInventory(bag.getItem(7));
+						}
+						bag.removeItem(7);
 					}
 				}
 			}
@@ -654,6 +712,16 @@ public class Player extends Sprite {
 			}
 			moveDown = false;
 		}
+		
+		if(key == KeyEvent.VK_F && healthPots > 0) {
+			healthPots --;
+			increaseHealth(100);
+		}
+		
+		if(key == KeyEvent.VK_V && manaPots > 0) {
+			manaPots --;
+			increaseMana(100);
+		}
 	}
 	
 	/**
@@ -814,6 +882,20 @@ public class Player extends Sprite {
      */
     public int getWis() {
     	return wisdom;
+    }
+    
+    /**Returns the health pots of the player
+     * @return Health pots
+     */
+    public int getHealthPots() {
+    	return healthPots;
+    }
+    
+    /**Returns the mana pots of the player
+     * @return Mana pots
+     */
+    public int getManaPots() {
+    	return manaPots;
     }
     
     /**Get max attack

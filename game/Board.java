@@ -421,6 +421,17 @@ public class Board extends JPanel implements ActionListener{
 			}
 		}
 		
+		//Health and Mana pots
+		Font font2 = new Font("Serial", Font.BOLD, 12);
+		g2d.drawRect(1640, 700, 100, 20);
+		g2d.drawRect(1740, 700, 100, 20);
+		g2d.setColor(Color.PINK);
+		g2d.setFont(font2);
+		g2d.drawString("Health Pots: " + player.getHealthPots(), 1650, 715);
+		g2d.setColor(Color.CYAN);
+		g2d.drawString("Mana Pots: " + player.getManaPots(), 1750, 715);
+		
+		g2d.setColor(Color.BLACK);
 		//Draw bag stuff
 		if (mainBag != null) {
 			g2d.drawRect(1640, 800, 50, 50);
