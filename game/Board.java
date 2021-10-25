@@ -276,6 +276,12 @@ public class Board extends JPanel implements ActionListener{
 				g2d.setColor(Color.GREEN);
 				g2d.fillRect((int)enemy.getX() + 1, (int)enemy.getY() + 1 + enemy.getHeight() + 5, 
 						(int)(((double)enemy.getHealth()/(double)enemy.getMaxHealth())*(enemy.getWidth()-1)), 7);
+				if (enemy.getTakeDamage()) {
+					Font font = new Font("Serial", Font.BOLD, 20);
+					g2d.setFont(font);
+					g2d.setColor(Color.RED);
+					g2d.drawString("-" + enemy.getDamageTaken(), (int) enemy.getX() + 5 , (int) enemy.getY() - 10);
+				}
 			}
 		}
 		

@@ -1,6 +1,8 @@
 package enemies;
 
 import java.awt.geom.Point2D;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import game.Board;
 import sprite.Player;
@@ -27,7 +29,10 @@ public class Enemy extends Sprite{
     private int maxHealth;
     private int defense;
     
-	
+    private Timer damageTimer;
+	private boolean takeDamage;
+	private int takeDamageInt;
+    
 	/**Constructor
 	 * @param x position
 	 * @param y position
@@ -99,9 +104,24 @@ public class Enemy extends Sprite{
 		if (defense > damage || (damage - defense)/(double)damage < 0.2)
 		{
 			health = (int) (health - (damage * 0.2));
-			return;
+			takeDamageInt = (int) (health - (damage * 0.2));
 		}
-		health = health - (damage - defense);
+		else{
+			health = health - (damage - defense);
+			takeDamageInt = damage;
+		}
+		
+		takeDamage = true;
+		damageTimer = new Timer();
+		damageTimer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				takeDamage = false;
+				damageTimer.cancel();
+				
+			}
+		}, 250);
 	}
 	
 	/**Move funtion
@@ -153,6 +173,20 @@ public class Enemy extends Sprite{
 		visible = false;
 	}
 	
+	/**Checks if taking damage
+     * @return yes or no
+     */
+    public boolean getTakeDamage() {
+    	return takeDamage;
+    }
+    
+    
+    /**Returns the damage the player took
+     * @return Damage from attack
+     */
+    public int getDamageTaken() {
+    	return takeDamageInt;
+    }
 	
 	
 	

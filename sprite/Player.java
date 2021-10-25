@@ -494,7 +494,7 @@ public class Player extends Sprite {
 				return;
 			}
 			
-			else if (e.getX() > 1640 && e.getX() < 1690 && e.getY() > 600 && e.getY() < 650) {
+			else if (e.getX() > 1640 && e.getX() < 1690 && e.getY() > 600 && e.getY() < 650 && inventory[0] != null) {
 				if (mainBag != null) {
 					mainBag.add(inventory[0]);
 					inventory[0] = null;
@@ -507,7 +507,7 @@ public class Player extends Sprite {
 
 				}
 			}
-			else if (e.getX() > 1690 && e.getX() < 1740 && e.getY() > 600 && e.getY() < 650) {
+			else if (e.getX() > 1690 && e.getX() < 1740 && e.getY() > 600 && e.getY() < 650 && inventory[1] != null) {
 				if (mainBag != null) {
 					mainBag.add(inventory[1]);
 					inventory[1] = null;
@@ -520,7 +520,7 @@ public class Player extends Sprite {
 
 				}
 			}
-			else if (e.getX() > 1740 && e.getX() < 1790 && e.getY() > 600 && e.getY() < 650) {
+			else if (e.getX() > 1740 && e.getX() < 1790 && e.getY() > 600 && e.getY() < 650 && inventory[2] != null) {
 				if (mainBag != null) {
 					mainBag.add(inventory[2]);
 					inventory[2] = null;
@@ -533,7 +533,7 @@ public class Player extends Sprite {
 
 				}
 			}
-			else if (e.getX() > 1790 && e.getX() < 1840 && e.getY() > 600 && e.getY() < 650) {
+			else if (e.getX() > 1790 && e.getX() < 1840 && e.getY() > 600 && e.getY() < 650 && inventory[3] != null) {
 				if (mainBag != null) {
 					mainBag.add(inventory[3]);
 					inventory[3] = null;
@@ -546,7 +546,7 @@ public class Player extends Sprite {
 
 				}
 			}
-			else if (e.getX() > 1640 && e.getX() < 1690 && e.getY() > 650 && e.getY() < 700) {
+			else if (e.getX() > 1640 && e.getX() < 1690 && e.getY() > 650 && e.getY() < 700 && inventory[4] != null) {
 				if (mainBag != null) {
 					mainBag.add(inventory[4]);
 					inventory[4] = null;
@@ -560,7 +560,7 @@ public class Player extends Sprite {
 					
 				}
 			}
-			else if (e.getX() > 1690 && e.getX() < 1740 && e.getY() > 650 && e.getY() < 700) {
+			else if (e.getX() > 1690 && e.getX() < 1740 && e.getY() > 650 && e.getY() < 700 && inventory[5] != null) {
 				if (mainBag != null) {
 					mainBag.add(inventory[5]);
 					inventory[5] = null;
@@ -573,7 +573,7 @@ public class Player extends Sprite {
 
 				}
 			}
-			else if (e.getX() > 1740 && e.getX() < 1790 && e.getY() > 650 && e.getY() < 700) {
+			else if (e.getX() > 1740 && e.getX() < 1790 && e.getY() > 650 && e.getY() < 700 && inventory[6] != null) {
 				if (mainBag != null) {
 					mainBag.add(inventory[6]);
 					inventory[6] = null;
@@ -586,7 +586,7 @@ public class Player extends Sprite {
 
 				}
 			}
-			else if (e.getX() > 1790 && e.getX() < 1840 && e.getY() > 650 && e.getY() < 700) {
+			else if (e.getX() > 1790 && e.getX() < 1840 && e.getY() > 650 && e.getY() < 700 && inventory[7] != null) {
 				if (mainBag != null) {
 					mainBag.add(inventory[7]);
 					inventory[7] = null;
@@ -606,7 +606,9 @@ public class Player extends Sprite {
 	 * @param e
 	 */
 	public void mouseReleased(MouseEvent e) {
-		fireTimer.cancel();
+		if(fireTimer != null) {
+			fireTimer.cancel();
+		}
 	}
 	
 
