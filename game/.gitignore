@@ -6,3 +6,12 @@
 /canFire.class
 /enemyCanFire.class
 /regenStats.class
+/TestApplication.class
+/TestBoard$MAdapter.class
+/TestBoard$TAdapter.class
+/TestBoard.class
+/ProdApplication.class
+/ProdTitleScreen.class
+/ProdBoard$MAdapter.class
+/ProdBoard$TAdapter.class
+/ProdBoard.class

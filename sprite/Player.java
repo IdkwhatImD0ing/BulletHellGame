@@ -77,6 +77,10 @@ public class Player extends Sprite {
 	private Timer levelUpTimer;
 	private boolean levelUp;
 	
+	private Timer damageTimer;
+	private boolean takeDamage;
+	private int takeDamageInt;
+	
 	public Map<String, Item> equipment;
 	public Sprite[] inventory;
 	
@@ -661,15 +665,32 @@ public class Player extends Sprite {
 	 * @param damage
 	 */
 	public void takeDamage(int damage) {
+		int minimumDamage = (int)(0.2 * damage);
+		
 		if (damage <= defense) {
-			health -= (int)(0.2 * damage);
+			health -= minimumDamage;
+			takeDamageInt = minimumDamage;
 		}
 		else if ((double)(damage-defense)/(double)damage < 0.2) {
-			health -= (int)(0.2 * damage);
+			health -= minimumDamage;
+			takeDamageInt = minimumDamage;
 		}
 		else {
 			health = health - (damage - defense);
+			takeDamageInt = damage;
 		}
+		
+		takeDamage = true;
+		damageTimer = new Timer();
+		damageTimer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				takeDamage = false;
+				damageTimer.cancel();
+				
+			}
+		}, 250);
 		
 	}
 	
@@ -1102,6 +1123,20 @@ public class Player extends Sprite {
      */
     public boolean getLevelUp() {
     	return levelUp;
+    }
+    /**Checks if taking damage
+     * @return yes or no
+     */
+    public boolean getTakeDamage() {
+    	return takeDamage;
+    }
+    
+    
+    /**Returns the damage the player took
+     * @return Damage from attack
+     */
+    public int getDamageTaken() {
+    	return takeDamageInt;
     }
     
     
