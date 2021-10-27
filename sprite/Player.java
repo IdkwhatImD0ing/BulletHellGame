@@ -35,8 +35,6 @@ public class Player extends Sprite {
 	private boolean moveUp = false;
 	private boolean moveDown = false;
 	
-	private boolean firing;
-	
 	
 	private static final int MAX_LEVEL = 20;
     private int level = 1;
@@ -128,7 +126,6 @@ public class Player extends Sprite {
 		initPlayer();
 		fireChanger = new Timer();
 		fireChanger.schedule(new fireChanger(this, board), 0, 400 - (dexterity * 4));
-		firing = false;
 		inventory = new Sprite[] {null, null, null, null,
 				null, null, null, null};
 		
@@ -296,8 +293,14 @@ public class Player extends Sprite {
 		int button = e.getButton();
 		if (button == MouseEvent.BUTTON1) {
 			if (e.getX() < 1620) {
+				if(getFire()) {
+					fireChanger.cancel();
+					fireChanger = new Timer();
+					fireChanger.schedule(new fireChanger(this, board), 400 - (dexterity * 4), 400 - (dexterity * 4));
+				}
 				fireTimer = new Timer();
 				fireTimer.schedule(new canFire(this, board), 0, 10);
+				
 			}
 			
 			else if (e.getX() > 1640 && e.getX() < 1690 && e.getY() > 600 && e.getY() < 650) {
@@ -752,13 +755,6 @@ public class Player extends Sprite {
 	}
 	
 	/**
-	 * @return
-	 */
-	public boolean isFiring() {
-		return firing;
-	}
-	
-	/**
 	 * @param damage
 	 */
 	public void takeDamage(int damage) {
@@ -808,7 +804,7 @@ public class Player extends Sprite {
 	public void regenMana() {
 		double manaRegen = wisdom * 0.2;
 		if (mana + manaRegen > maxMana) {
-			mana = (int)maxMana;
+			mana = maxMana;
 		}
 		else {
 			mana += (int)manaRegen;
