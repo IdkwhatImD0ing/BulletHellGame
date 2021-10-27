@@ -15,6 +15,7 @@ import bags.BrownBag;
 import equipment.Item;
 import game.Board;
 import game.canFire;
+import game.fireChanger;
 import game.regenStats;
 import pots.HealthPot;
 import pots.MpPot;
@@ -67,7 +68,9 @@ public class Player extends Sprite {
     private int healthPots;
     private int manaPots;
 	
+    private boolean fire;
 	private Timer fireTimer;
+	private Timer fireChanger;
 	private Timer regenTimer;
 	TimerTask fireThread;
 	
@@ -108,6 +111,8 @@ public class Player extends Sprite {
 			String movingRight, String movingLeft, String movingUp, String movingDown) {
 		super(x, y, board);
 		levelUpTimer = new Timer();
+		fire = true;
+		
 		this.rightImage = rightImage;
 		this.leftImage = leftImage;
 		this.downImage = downImage;
@@ -121,6 +126,8 @@ public class Player extends Sprite {
 		movingDownImage = movingDown;
 		damageList = new ArrayList<Damage>();
 		initPlayer();
+		fireChanger = new Timer();
+		fireChanger.schedule(new fireChanger(this, board), 0, 400 - (dexterity * 4));
 		firing = false;
 		inventory = new Sprite[] {null, null, null, null,
 				null, null, null, null};
@@ -290,7 +297,7 @@ public class Player extends Sprite {
 		if (button == MouseEvent.BUTTON1) {
 			if (e.getX() < 1620) {
 				fireTimer = new Timer();
-				fireTimer.schedule(new canFire(this, board), 0, 400 - (dexterity * 4));
+				fireTimer.schedule(new canFire(this, board), 0, 10);
 			}
 			
 			else if (e.getX() > 1640 && e.getX() < 1690 && e.getY() > 600 && e.getY() < 650) {
@@ -1013,6 +1020,9 @@ public class Player extends Sprite {
      */
     public void increaseDex(int x) {
     	dexterity += x;
+    	fireChanger.cancel();
+    	fireChanger = new Timer();
+    	fireChanger.schedule(new fireChanger(this, board), 0, 400 - (dexterity * 4));
     }
     
     /**Increase health
@@ -1235,5 +1245,12 @@ public class Player extends Sprite {
     	return damageList;
     }
     
+    public void setFire(boolean bool) {
+    	fire = bool;
+    }
+    
+    public boolean getFire() {
+    	return fire;
+    }
     
 }

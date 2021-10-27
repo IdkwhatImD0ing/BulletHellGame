@@ -13,7 +13,7 @@ import sprite.Player;
  * @author Bill Zhang
  *
  */
-public class canFire extends TimerTask{
+public class fireChanger extends TimerTask{
 	
 
 	private Player player;
@@ -23,7 +23,7 @@ public class canFire extends TimerTask{
 	 * @param player player this timertask belongs too
 	 * @param board board the player is on
 	 */
-	public canFire(Player player, Board board) {
+	public fireChanger(Player player, Board board) {
 		this.player = player;
 		jFrame = board.getJFrame();
 	}
@@ -32,12 +32,7 @@ public class canFire extends TimerTask{
 	 *
 	 */
 	public void run() {
-		if(player.getFire()) {
-			Point2D mousePoint = MouseInfo.getPointerInfo().getLocation();
-			mousePoint.setLocation(mousePoint.getX() - jFrame.getX(), mousePoint.getY() - jFrame.getY());
-			player.fire(mousePoint);
-			player.setFire(false);
-		}
+		player.setFire(true);
 	}
 	
 
