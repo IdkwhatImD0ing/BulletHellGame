@@ -43,6 +43,14 @@ public class Sprite {
         image = ii.getImage();
     }
     
+    /**Sets the image of this class to an image
+     * @param image image to be set
+     */
+    protected void setImage(Image image) {
+    	this.image = image;
+    	getImageDimensions();
+    }
+    
     /**Sets the image
      * @param image image tos et
      */

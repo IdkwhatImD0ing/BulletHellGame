@@ -61,6 +61,32 @@ public class Enemy extends Sprite{
 			
 	}
 	
+	/**Constructor without image string
+	 * @param x position
+	 * @param y position
+	 * @param player Player enemy targeting
+	 * @param imageName image of the enemy
+	 * @param speed Speed of the enemy
+	 * @param health health of the enemy
+	 * @param defense defense of the enemy
+	 * @param board board enemy is on
+	 */
+	public Enemy(int x, int y, Player player, double speed, int health, int defense, Board board) {
+		super(x,y, board);
+		maxHealth = health;
+		this.health = health;
+		this.defense = defense;
+		SPEED = speed;
+		target = player;
+
+		currentX = x;
+		currentY = y;
+		distanceX = target.getX() - currentX;
+		distanceY = target.getY() - currentY;
+			
+			
+	}
+	
 	/**Initializes the enemy
 	 * 
 	 */

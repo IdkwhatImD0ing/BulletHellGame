@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -89,6 +90,9 @@ public class Player extends Sprite {
 	public Map<String, Item> equipment;
 	public Sprite[] inventory;
 	
+	private ArrayList<Damage> damageList;
+	private Timer timer;
+	
 	/**Constructor
 	 * @param x x position
 	 * @param y y position
@@ -117,6 +121,7 @@ public class Player extends Sprite {
 		movingLeftImage = movingLeft;
 		movingUpImage = movingUp;
 		movingDownImage = movingDown;
+		damageList = new ArrayList<Damage>();
 		initPlayer();
 		firing = false;
 		inventory = new Sprite[] {null, null, null, null,
@@ -131,6 +136,23 @@ public class Player extends Sprite {
 
 		loadImage(rightImage);
 		getImageDimensions();
+		timer = new Timer();
+		timer.schedule(new TimerTask() {
+			  @Override
+			  public void run() {
+				if(damageList.size() == 0) {
+					return;
+				}
+			    for (int i = 0 ; i < damageList.size(); i++) {
+			    	if(damageList.get(i).time > 5) {
+			    		damageList.remove(i);
+			    	}
+			    	else {
+			    		damageList.get(i).time += 1;
+			    	}
+			    }
+			  }
+			}, 0, 10);
 	}
 	
 
@@ -750,17 +772,8 @@ public class Player extends Sprite {
 			takeDamageInt = damage;
 		}
 		
-		takeDamage = true;
-		damageTimer = new Timer();
-		damageTimer.schedule(new TimerTask() {
-			
-			@Override
-			public void run() {
-				takeDamage = false;
-				damageTimer.cancel();
-				
-			}
-		}, 250);
+		Damage newDamage = new Damage(takeDamageInt, 0);
+		damageList.add(newDamage);
 		
 	}
 	
@@ -1223,7 +1236,9 @@ public class Player extends Sprite {
     	return takeDamageInt;
     }
     
-    
+    public ArrayList<Damage> getDamageList() {
+    	return damageList;
+    }
     
     
 }
