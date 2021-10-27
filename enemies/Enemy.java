@@ -1,12 +1,14 @@
 package enemies;
 
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import game.Board;
 import sprite.Player;
 import sprite.Sprite;
+import sprite.Damage;
 
 /**Enemy main class
  * @author Bill Zhang
@@ -29,10 +31,10 @@ public class Enemy extends Sprite{
     private int maxHealth;
     private int defense;
     
-    private Timer damageTimer;
-	private boolean takeDamage;
 	private int takeDamageInt;
-    
+	private ArrayList<Damage> damageList;
+	private Timer timer;
+	
 	/**Constructor
 	 * @param x position
 	 * @param y position
@@ -50,9 +52,9 @@ public class Enemy extends Sprite{
 		this.defense = defense;
 		SPEED = speed;
 		image = imageName;
+		damageList = new ArrayList<Damage>();
 		initEnemy();
 		target = player;
-
 		currentX = x;
 		currentY = y;
 		distanceX = target.getX() - currentX;
@@ -78,7 +80,7 @@ public class Enemy extends Sprite{
 		this.defense = defense;
 		SPEED = speed;
 		target = player;
-
+		damageList = new ArrayList<Damage>();
 		currentX = x;
 		currentY = y;
 		distanceX = target.getX() - currentX;
@@ -93,6 +95,23 @@ public class Enemy extends Sprite{
 	public void initEnemy() {
 		loadImage(image);
 		getImageDimensions();
+		timer = new Timer();
+		timer.schedule(new TimerTask() {
+			  @Override
+			  public void run() {
+				if(damageList.size() == 0) {
+					return;
+				}
+			    for (int i = 0 ; i < damageList.size(); i++) {
+			    	if(damageList.get(i).time > 8) {
+			    		damageList.remove(i);
+			    	}
+			    	else {
+			    		damageList.get(i).time += 1;
+			    	}
+			    }
+			  }
+			}, 0, 10);
 	}
 	
 	/**Distance from player x
@@ -137,17 +156,8 @@ public class Enemy extends Sprite{
 			takeDamageInt = damage;
 		}
 		
-		takeDamage = true;
-		damageTimer = new Timer();
-		damageTimer.schedule(new TimerTask() {
-			
-			@Override
-			public void run() {
-				takeDamage = false;
-				damageTimer.cancel();
-				
-			}
-		}, 250);
+		Damage newDamage = new Damage(takeDamageInt, 0);
+		damageList.add(newDamage);
 	}
 	
 	/**Move funtion
@@ -202,10 +212,10 @@ public class Enemy extends Sprite{
 	/**Checks if taking damage
      * @return yes or no
      */
-    public boolean getTakeDamage() {
-    	return takeDamage;
+
+    public ArrayList<Damage> getDamageList() {
+    	return damageList;
     }
-    
     
     /**Returns the damage the player took
      * @return Damage from attack

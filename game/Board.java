@@ -224,14 +224,12 @@ public class Board extends JPanel implements ActionListener{
 				g2d.setColor(Color.GREEN);
 				g2d.drawString("Level Up!", (int) player.getX() - 40, (int) player.getY() - 10);
 			}
-			if (player.getDamageList().size() > 0) {
-				for(int i = 0; i < player.getDamageList().size(); i++) {
-					Font font = new Font("Serial", Font.BOLD, 20);
-					g2d.setFont(font);
-					g2d.setColor(Color.RED);
-					g2d.drawString("-" + player.getDamageList().get(i).damage, (int) player.getX() + 5 , 
-							(int) player.getY() - 10 - player.getDamageList().get(i).time);
-				}
+			for(int i = 0; i < player.getDamageList().size(); i++) {
+				Font font = new Font("Serial", Font.BOLD, 20);
+				g2d.setFont(font);
+				g2d.setColor(Color.RED);
+				g2d.drawString("-" + player.getDamageList().get(i).damage, (int) player.getX() + 5 , 
+						(int) player.getY() - 10 - player.getDamageList().get(i).time);
 			}
 			g2d.setColor(Color.black);
 			g2d.drawImage(player.getImage(), (int)player.getX(), (int) player.getY(), this);
@@ -279,11 +277,12 @@ public class Board extends JPanel implements ActionListener{
 				g2d.setColor(Color.GREEN);
 				g2d.fillRect((int)enemy.getX() + 1, (int)enemy.getY() + 1 + enemy.getHeight() + 5, 
 						(int)(((double)enemy.getHealth()/(double)enemy.getMaxHealth())*(enemy.getWidth()-1)), 7);
-				if (enemy.getTakeDamage()) {
+				for(int i = 0; i < enemy.getDamageList().size(); i++) {
 					Font font = new Font("Serial", Font.BOLD, 20);
 					g2d.setFont(font);
 					g2d.setColor(Color.RED);
-					g2d.drawString("-" + enemy.getDamageTaken(), (int) enemy.getX() + 5 , (int) enemy.getY() - 10);
+					g2d.drawString("-" + enemy.getDamageList().get(i).damage, (int) enemy.getX() + 5 , 
+							(int) enemy.getY() - 10 - enemy.getDamageList().get(i).time);
 				}
 			}
 		}

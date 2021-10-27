@@ -83,10 +83,8 @@ public class Player extends Sprite {
 	private Timer levelUpTimer;
 	private boolean levelUp;
 	
-	private Timer damageTimer;
-	private boolean takeDamage;
+
 	private int takeDamageInt;
-	
 	public Map<String, Item> equipment;
 	public Sprite[] inventory;
 	
@@ -144,7 +142,7 @@ public class Player extends Sprite {
 					return;
 				}
 			    for (int i = 0 ; i < damageList.size(); i++) {
-			    	if(damageList.get(i).time > 5) {
+			    	if(damageList.get(i).time > 8) {
 			    		damageList.remove(i);
 			    	}
 			    	else {
@@ -1224,9 +1222,6 @@ public class Player extends Sprite {
     /**Checks if taking damage
      * @return yes or no
      */
-    public boolean getTakeDamage() {
-    	return takeDamage;
-    }
     
     
     /**Returns the damage the player took
