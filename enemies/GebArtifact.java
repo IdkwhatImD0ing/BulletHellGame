@@ -13,21 +13,24 @@ import pots.MpPot;
 import sprite.Player;
 import sprite.Projectile;
 
-/**Geb Artifact class
+/**
+ * Geb Artifact class
+ * 
  * @author Bill Zhang
  *
  */
-public class GebArtifact extends Enemy{
-	
+public class GebArtifact extends Enemy {
+
 	private Random rand;
 
-    private Timer timer;
-    private boolean isTimerOn;
+	private Timer timer;
+	private boolean isTimerOn;
+
 	/**
-	 * @param x position
-	 * @param y position
+	 * @param x      position
+	 * @param y      position
 	 * @param player target
-	 * @param board board enemy is on
+	 * @param board  board enemy is on
 	 */
 	public GebArtifact(int x, int y, Player player, Board board) {
 		super(x, y, player, "src/Enemies/Boss/GebArtifact.png", 2, 2000, 5, board);
@@ -36,8 +39,9 @@ public class GebArtifact extends Enemy{
 		rand = new Random();
 		// TODO Auto-generated constructor stub
 	}
-	
-	/**Move function. Will move towards target and fire
+
+	/**
+	 * Move function. Will move towards target and fire
 	 *
 	 */
 	public void move() {
@@ -48,28 +52,27 @@ public class GebArtifact extends Enemy{
 				timer.schedule(new enemyCanFire(this, getTarget(), board), 0, 300);
 				isTimerOn = true;
 			}
-		}
-		else {
-			if(isTimerOn) {
+		} else {
+			if (isTimerOn) {
 				timer.cancel();
 				isTimerOn = false;
 			}
 		}
 	}
-	
-	
-	/**Fire function
-	 * Fire one bullet
+
+	/**
+	 * Fire function Fire one bullet
 	 */
 	public void fire(Point2D point) {
 		if (visible) {
-			board.getEnemyProjectiles().add(new Projectile(x + getWidth()/2, y + getHeight()/2, point.getX(), point.getY(), "src/Enemies/Boss/GreenBullet.png", 500, 6, 150));
-			
-		}
-    }
+			board.getEnemyProjectiles().add(new Projectile(x + getWidth() / 2, y + getHeight() / 2, point.getX(),
+					point.getY(), "src/Enemies/Boss/GreenBullet.png", 500, 6, 150));
 
-	
-	/**Drops loot and xp when dead
+		}
+	}
+
+	/**
+	 * Drops loot and xp when dead
 	 *
 	 */
 	public void die() {
@@ -84,17 +87,14 @@ public class GebArtifact extends Enemy{
 			if (rng < 0.5) {
 				loot.add(new HealthPot(board));
 				board.getBags().add(loot);
-			}
-			else if (rng < 1) {
+			} else if (rng < 1) {
 				loot.add(new MpPot(board));
 				board.getBags().add(loot);
 
 			}
 		}
 		super.die();
-		
-		
+
 	}
 
-	
 }

@@ -7,7 +7,9 @@ import javax.swing.ImageIcon;
 
 import game.Board;
 
-/**Main Sprite class
+/**
+ * Main Sprite class
+ * 
  * @author Bill Zhang
  *
  */
@@ -21,9 +23,11 @@ public class Sprite {
     protected Image image;
     protected Board board;
 
-    /**Constructor 
-     * @param x position
-     * @param y position
+    /**
+     * Constructor
+     * 
+     * @param x     position
+     * @param y     position
      * @param board board this is on
      */
     public Sprite(double x, double y, Board board) {
@@ -34,7 +38,9 @@ public class Sprite {
         visible = true;
     }
 
-    /**Intializes the image
+    /**
+     * Intializes the image
+     * 
      * @param imageName the src of image
      */
     protected void loadImage(String imageName) {
@@ -42,120 +48,150 @@ public class Sprite {
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();
     }
-    
-    /**Sets the image of this class to an image
+
+    /**
+     * Sets the image of this class to an image
+     * 
      * @param image image to be set
      */
     protected void setImage(Image image) {
-    	this.image = image;
-    	getImageDimensions();
+        this.image = image;
+        getImageDimensions();
     }
-    
-    /**Sets the image
+
+    /**
+     * Sets the image
+     * 
      * @param image image tos et
      */
     protected void loadImage(Image image) {
-    	this.image = image;
+        this.image = image;
     }
-    
-    /**Gets the image dimensions
+
+    /**
+     * Gets the image dimensions
      * 
      */
     protected void getImageDimensions() {
 
         width = image.getWidth(null);
         height = image.getHeight(null);
-    }    
+    }
 
-    /**Gets the image
+    /**
+     * Gets the image
+     * 
      * @return image
      */
     public Image getImage() {
         return image;
     }
 
-    /**Gets x position
+    /**
+     * Gets x position
+     * 
      * @return x position
      */
     public double getX() {
         return x;
     }
 
-    /**Gets y postion
+    /**
+     * Gets y postion
+     * 
      * @return y position
      */
     public double getY() {
         return y;
     }
 
-    /**Checks if visible or not
+    /**
+     * Checks if visible or not
+     * 
      * @return true or false
      */
     public boolean isVisible() {
         return visible;
     }
-    
-    /**Gest the width
+
+    /**
+     * Gest the width
+     * 
      * @return width
      */
     public int getWidth() {
-		return width;
-	}
-    
-    /**Gets the height
+        return width;
+    }
+
+    /**
+     * Gets the height
+     * 
      * @return height
      */
     public int getHeight() {
-		return height;
-	}
+        return height;
+    }
 
-    /**Sets visible or not
+    /**
+     * Sets visible or not
+     * 
      * @param visible yes or no
      */
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
-    
-    /**Gets bounds
+
+    /**
+     * Gets bounds
+     * 
      * @return bounds
      */
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, width, height);
+        return new Rectangle((int) x, (int) y, width, height);
     }
-    
-    /**GEts board
+
+    /**
+     * GEts board
+     * 
      * @return board
      */
     public Board getBoard() {
-    	return board;
+        return board;
     }
-    
-    /**Uses pot in player for pot classes
+
+    /**
+     * Uses pot in player for pot classes
+     * 
      * @param player player
      */
     public void usePot(Player player) {
-    	return;
+        return;
     }
-    
-    /**Equips the item
+
+    /**
+     * Equips the item
      * 
      */
     public void equipItem() {
-    	return;
+        return;
     }
-    
-    /**Gets type of item
+
+    /**
+     * Gets type of item
+     * 
      * @return type
      */
     public String getType() {
-    	return "";
+        return "";
     }
-    
-    /**Gets the description
+
+    /**
+     * Gets the description
+     * 
      * @return description
      */
     public String getInfo() {
-    	return "";
+        return "";
     }
-    
+
 }

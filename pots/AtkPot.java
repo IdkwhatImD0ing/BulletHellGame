@@ -4,7 +4,10 @@ import java.awt.Toolkit;
 
 import game.Board;
 import sprite.Player;
-/**Atk Pot Class
+
+/**
+ * Atk Pot Class
+ * 
  * @author Bill Zhang
  *
  */

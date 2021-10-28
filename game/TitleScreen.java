@@ -13,34 +13,37 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-/**Title Screen Class
+/**
+ * Title Screen Class
+ * 
  * @author Bill Zhang
  *
  */
-public class TitleScreen extends JPanel implements ActionListener{
-
-	
+public class TitleScreen extends JPanel implements ActionListener {
 
 	private Application jFrame;
 	private JButton startButton;
 	private JButton exitButton;
-	
-	/**Constructor
-	 * @param x x length
-	 * @param y y length
+
+	/**
+	 * Constructor
+	 * 
+	 * @param x     x length
+	 * @param y     y length
 	 * @param frame frame this component is in
 	 */
 	public TitleScreen(int x, int y, Application frame) {
 		jFrame = frame;
 		initScreen();
-		
+
 	}
 
-	/**initializes the screen
+	/**
+	 * initializes the screen
 	 * 
 	 */
 	public void initScreen() {
-		setBounds(0,0,1920,1080);
+		setBounds(0, 0, 1920, 1080);
 		setFocusable(true);
 		Color backColor = new Color(51, 102, 0);
 		setBackground(backColor);
@@ -50,12 +53,11 @@ public class TitleScreen extends JPanel implements ActionListener{
 		exitButton.addActionListener(this);
 		add(startButton);
 		add(exitButton);
-		
-		
-	}
-	
 
-	/**Paints the Gui
+	}
+
+	/**
+	 * Paints the Gui
 	 *
 	 */
 	@Override
@@ -64,8 +66,10 @@ public class TitleScreen extends JPanel implements ActionListener{
 		drawUi(g);
 		Toolkit.getDefaultToolkit().sync();
 	}
-	
-	/**The stuff that is painted
+
+	/**
+	 * The stuff that is painted
+	 * 
 	 * @param g The graphics class we are using.
 	 */
 	public void drawUi(Graphics g) {
@@ -78,9 +82,9 @@ public class TitleScreen extends JPanel implements ActionListener{
 		g2d.drawString("Controls", 200, 150);
 		g2d.drawString("Tips", 1640, 150);
 		font = new Font("Serif", Font.PLAIN, 20);
-		
+
 		g2d.setFont(font);
-		
+
 		g2d.drawString("W = Move up", 130, 200);
 		g2d.drawString("A = Move left", 130, 250);
 		g2d.drawString("S = Move down", 130, 300);
@@ -94,9 +98,6 @@ public class TitleScreen extends JPanel implements ActionListener{
 		g2d.drawString("Vit increase hp regen", 130, 750);
 		g2d.drawString("Wis increases mana regen", 130, 800);
 
-		
-		
-		
 		g2d.drawString("Blue Bags contains pots", 1550, 200);
 		g2d.drawString("Pots permanently increase stats", 1550, 225);
 		g2d.drawString("White Bags contains rare items", 1550, 300);
@@ -108,44 +109,41 @@ public class TitleScreen extends JPanel implements ActionListener{
 		g2d.drawString("your health and mana", 1550, 575);
 		g2d.drawString("When your health drops to 0,", 1550, 625);
 		g2d.drawString("you lose!", 1550, 650);
-		
+
 		g2d.drawString("Descriptions of items", 1550, 700);
 		g2d.drawString("are in the top right corner", 1550, 725);
-		
+
 		startButton.setSize(620, 200);
 		startButton.setLocation(650, 480);
 		startButton.setOpaque(false);
 		startButton.setContentAreaFilled(false);
 		startButton.setFont(font);
 		startButton.setForeground(Color.WHITE);
-		
+
 		exitButton.setSize(620, 200);
 		exitButton.setLocation(650, 780);
 		exitButton.setOpaque(false);
 		exitButton.setContentAreaFilled(false);
 		exitButton.setFont(font);
 		exitButton.setForeground(Color.WHITE);
-		
+
 		font = new Font("Serif", Font.BOLD, 250);
 		g2d.setFont(font);
 		g2d.drawString("EXALT", 530, 350);
-		
+
 	}
 
-	/**Actionlistener for the buttons
+	/**
+	 * Actionlistener for the buttons
 	 *
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == startButton) {
 			jFrame.initGame();
-		}
-		else if (e.getSource() == exitButton) {
+		} else if (e.getSource() == exitButton) {
 			jFrame.exit();
 		}
 	}
-	
-	
-	
-	
+
 }

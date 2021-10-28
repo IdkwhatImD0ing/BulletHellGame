@@ -13,17 +13,18 @@ import pots.MpPot;
 import sprite.Player;
 import sprite.Projectile;
 
-public class NutArtifact extends Enemy{
-	
+public class NutArtifact extends Enemy {
+
 	private Random rand;
 
-    private Timer timer;
-    private boolean isTimerOn;
-    /**
-	 * @param x position
-	 * @param y position
+	private Timer timer;
+	private boolean isTimerOn;
+
+	/**
+	 * @param x      position
+	 * @param y      position
 	 * @param player target
-	 * @param board board enemy is on
+	 * @param board  board enemy is on
 	 */
 	public NutArtifact(int x, int y, Player player, Board board) {
 		super(x, y, player, "src/Enemies/Boss/NutArtifact.png", 2, 500, 5, board);
@@ -32,7 +33,9 @@ public class NutArtifact extends Enemy{
 		rand = new Random();
 		// TODO Auto-generated constructor stub
 	}
-	/**Move function. Will move towards target and fire
+
+	/**
+	 * Move function. Will move towards target and fire
 	 *
 	 */
 	public void move() {
@@ -43,26 +46,27 @@ public class NutArtifact extends Enemy{
 				timer.schedule(new enemyCanFire(this, getTarget(), board), 0, 1500);
 				isTimerOn = true;
 			}
-		}
-		else {
-			if(isTimerOn) {
+		} else {
+			if (isTimerOn) {
 				timer.cancel();
 				isTimerOn = false;
 			}
 		}
 	}
-	
-	/**Fire function
-	 * Fires bullets
+
+	/**
+	 * Fire function Fires bullets
 	 */
 	public void fire(Point2D point) {
 		if (visible) {
-			board.getEnemyProjectiles().add(new Projectile(x + getWidth()/2, y + getHeight()/2, point.getX(), point.getY(), "src/Enemies/Boss/LightBlueBullet.png", 500, 4, 100));
-			
-		}
-    }
+			board.getEnemyProjectiles().add(new Projectile(x + getWidth() / 2, y + getHeight() / 2, point.getX(),
+					point.getY(), "src/Enemies/Boss/LightBlueBullet.png", 500, 4, 100));
 
-	/**Drops loot and xp when dead
+		}
+	}
+
+	/**
+	 * Drops loot and xp when dead
 	 *
 	 */
 	public void die() {
@@ -77,17 +81,14 @@ public class NutArtifact extends Enemy{
 			if (rng < 0.5) {
 				loot.add(new HealthPot(board));
 				board.getBags().add(loot);
-			}
-			else if (rng < 1) {
+			} else if (rng < 1) {
 				loot.add(new MpPot(board));
 				board.getBags().add(loot);
 
 			}
 		}
 		super.die();
-		
-		
+
 	}
 
-	
 }

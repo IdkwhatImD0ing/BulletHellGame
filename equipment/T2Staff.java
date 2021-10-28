@@ -5,10 +5,8 @@ import java.awt.Toolkit;
 import game.Board;
 import sprite.Player;
 
-public class T2Staff extends Item{
-	
+public class T2Staff extends Item {
 
-	
 	public T2Staff(Player player) {
 		super(player, "src/Weapons/T2Staff.png", "weapon", true);
 		attack = 35;
@@ -18,5 +16,5 @@ public class T2Staff extends Item{
 	public String getInfo() {
 		return "Attack: " + attack;
 	}
-	
+
 }

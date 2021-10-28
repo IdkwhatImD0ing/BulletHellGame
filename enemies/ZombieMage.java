@@ -13,27 +13,29 @@ import pots.MpPot;
 import sprite.Player;
 import sprite.Projectile;
 
-public class ZombieMage extends Enemy{
-	
+public class ZombieMage extends Enemy {
+
 	private Random rand;
 
-    private Timer timer;
-    private boolean isTimerOn;
-    
-    /**
-	 * @param x position
-	 * @param y position
+	private Timer timer;
+	private boolean isTimerOn;
+
+	/**
+	 * @param x      position
+	 * @param y      position
 	 * @param player target
-	 * @param board board enemy is on
+	 * @param board  board enemy is on
 	 */
 	public ZombieMage(int x, int y, Player player, Board board) {
-		super(x, y, player, "src/Enemies/Zombie/ZombieMage.png", 1.2, 100 + 10* board.getRound(), 5, board);
+		super(x, y, player, "src/Enemies/Zombie/ZombieMage.png", 1.2, 100 + 10 * board.getRound(), 5, board);
 		timer = new Timer();
 		isTimerOn = false;
 		rand = new Random();
 		// TODO Auto-generated constructor stub
 	}
-	/**Move function. Will move towards target and fire
+
+	/**
+	 * Move function. Will move towards target and fire
 	 *
 	 */
 	public void move() {
@@ -44,26 +46,27 @@ public class ZombieMage extends Enemy{
 				timer.schedule(new enemyCanFire(this, getTarget(), board), 0, 500);
 				isTimerOn = true;
 			}
-		}
-		else {
-			if(isTimerOn) {
+		} else {
+			if (isTimerOn) {
 				timer.cancel();
 				isTimerOn = false;
 			}
 		}
 	}
-	
-	/**Fire function
-	 * Fires bullets
+
+	/**
+	 * Fire function Fires bullets
 	 */
 	public void fire(Point2D point) {
 		if (visible) {
-			board.getEnemyProjectiles().add(new Projectile(x + getWidth()/2, y + getHeight()/2, point.getX(), point.getY(), "src/Enemies/Zombie/Bullet.png", 500, 2, 10 + 2 * board.getRound()));
-			
-		}
-    }
+			board.getEnemyProjectiles().add(new Projectile(x + getWidth() / 2, y + getHeight() / 2, point.getX(),
+					point.getY(), "src/Enemies/Zombie/Bullet.png", 500, 2, 10 + 2 * board.getRound()));
 
-	/**Drops loot and xp when dead
+		}
+	}
+
+	/**
+	 * Drops loot and xp when dead
 	 *
 	 */
 	public void die() {
@@ -78,17 +81,14 @@ public class ZombieMage extends Enemy{
 			if (rng < 0.5) {
 				loot.add(new HealthPot(board));
 				board.getBags().add(loot);
-			}
-			else if (rng < 1) {
+			} else if (rng < 1) {
 				loot.add(new MpPot(board));
 				board.getBags().add(loot);
 			}
 		}
-		
+
 		super.die();
-		
-		
+
 	}
 
-	
 }

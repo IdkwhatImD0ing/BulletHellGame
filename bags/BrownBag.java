@@ -7,9 +7,11 @@ import game.Board;
  *
  */
 public class BrownBag extends Bag{
-	/**Constructor
-	 * @param x x position
-	 * @param y y position
+	/**
+	 * Constructor
+	 * 
+	 * @param x     x position
+	 * @param y     y position
 	 * @param board board of bagx`
 	 */
 	public BrownBag(double x, double y, Board board) {

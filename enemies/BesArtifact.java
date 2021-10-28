@@ -13,22 +13,27 @@ import pots.MpPot;
 import sprite.Player;
 import sprite.Projectile;
 
-/**Minion of one of the bosses
+/**
+ * Minion of one of the bosses
+ * 
  * @author Bill Zhang
  *
  */
-public class BesArtifact extends Enemy{
-	
-	private final double ANGLE = Math.PI/6.0;
+public class BesArtifact extends Enemy {
+
+	private final double ANGLE = Math.PI / 6.0;
 	private Random rand;
 
-    private Timer timer;
-    private boolean isTimerOn;
-	/**Constructor
-	 * @param x x position
-	 * @param y y position
+	private Timer timer;
+	private boolean isTimerOn;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param x      x position
+	 * @param y      y position
 	 * @param player player the enemy is targeting
-	 * @param board board of the enemy
+	 * @param board  board of the enemy
 	 */
 	public BesArtifact(int x, int y, Player player, Board board) {
 		super(x, y, player, "src/Enemies/Boss/BesArtifact.png", 2, 500, 5, board);
@@ -37,8 +42,9 @@ public class BesArtifact extends Enemy{
 		rand = new Random();
 		// TODO Auto-generated constructor stub
 	}
-	
-	/**Move function
+
+	/**
+	 * Move function
 	 *
 	 */
 	public void move() {
@@ -49,28 +55,28 @@ public class BesArtifact extends Enemy{
 				timer.schedule(new enemyCanFire(this, getTarget(), board), 0, 500);
 				isTimerOn = true;
 			}
-		}
-		else {
-			if(isTimerOn) {
+		} else {
+			if (isTimerOn) {
 				timer.cancel();
 				isTimerOn = false;
 			}
 		}
 	}
-	
-	
-	/**Fire function
+
+	/**
+	 * Fire function
 	 *
 	 */
 	public void fire(Point2D point) {
 		if (visible) {
-			board.getEnemyProjectiles().add(new Projectile(x + getWidth()/2, y + getHeight()/2, point.getX(), point.getY(), "src/Enemies/Boss/BlackBullet.png", 500, 3, 50));
-			
-		}
-    }
+			board.getEnemyProjectiles().add(new Projectile(x + getWidth() / 2, y + getHeight() / 2, point.getX(),
+					point.getY(), "src/Enemies/Boss/BlackBullet.png", 500, 3, 50));
 
-	
-	/**Die function
+		}
+	}
+
+	/**
+	 * Die function
 	 *
 	 */
 	public void die() {
@@ -85,17 +91,14 @@ public class BesArtifact extends Enemy{
 			if (rng < 0.5) {
 				loot.add(new HealthPot(board));
 				board.getBags().add(loot);
-			}
-			else if (rng < 1) {
+			} else if (rng < 1) {
 				loot.add(new MpPot(board));
 				board.getBags().add(loot);
 
 			}
 		}
 		super.die();
-		
-		
+
 	}
 
-	
 }

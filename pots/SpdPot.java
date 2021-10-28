@@ -4,12 +4,17 @@ import java.awt.Toolkit;
 
 import game.Board;
 import sprite.Player;
-/**Speed Pot Class
+
+/**
+ * Speed Pot Class
+ * 
  * @author Bill Zhang
  *
  */
-public class SpdPot extends Pot{
-	/**Constructor 
+public class SpdPot extends Pot {
+	/**
+	 * Constructor
+	 * 
 	 * @param board board this pot is on
 	 */
 	public SpdPot(Board board) {
@@ -17,9 +22,10 @@ public class SpdPot extends Pot{
 		image = Toolkit.getDefaultToolkit().createImage("src/Pots/SpdPot.png");
 		initPot();
 	}
-	
-	/** Use Pot fuction
-	 * Player gains the stats of this pot
+
+	/**
+	 * Use Pot fuction Player gains the stats of this pot
+	 * 
 	 * @param player to use pot on
 	 */
 	public void usePot(Player player) {
@@ -27,7 +33,9 @@ public class SpdPot extends Pot{
 			player.increaseSpd(1);
 		}
 	}
-	/**Gets description of the pot
+
+	/**
+	 * Gets description of the pot
 	 */
 	public String getInfo() {
 		return "Increase player speed by 1";

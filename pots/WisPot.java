@@ -5,25 +5,28 @@ import java.awt.Toolkit;
 import game.Board;
 import sprite.Player;
 
-
-/**Wis Pot Class
+/**
+ * Wis Pot Class
+ * 
  * @author Bill Zhang
  *
  */
-public class WisPot extends Pot{
-	/**Constructor 
+public class WisPot extends Pot {
+	/**
+	 * Constructor
+	 * 
 	 * @param board board this pot is on
 	 */
-	
+
 	public WisPot(Board board) {
 		super(board);
 		image = Toolkit.getDefaultToolkit().createImage("src/Pots/WisPot.png");
 		initPot();
 	}
-	
-	
-	/** Use Pot fuction
-	 * Player gains the stats of this pot
+
+	/**
+	 * Use Pot fuction Player gains the stats of this pot
+	 * 
 	 * @param player to use pot on
 	 */
 	public void usePot(Player player) {
@@ -31,7 +34,9 @@ public class WisPot extends Pot{
 			player.increaseWis(1);
 		}
 	}
-	/**Gets description of the pot
+
+	/**
+	 * Gets description of the pot
 	 */
 	public String getInfo() {
 		return "Increase player wisdom by 1";

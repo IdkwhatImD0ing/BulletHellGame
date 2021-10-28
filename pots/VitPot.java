@@ -5,12 +5,16 @@ import java.awt.Toolkit;
 import game.Board;
 import sprite.Player;
 
-/**Vit Pot Class
+/**
+ * Vit Pot Class
+ * 
  * @author Bill Zhang
  *
  */
-public class VitPot extends Pot{
-	/**Constructor 
+public class VitPot extends Pot {
+	/**
+	 * Constructor
+	 * 
 	 * @param board board this pot is on
 	 */
 	public VitPot(Board board) {
@@ -18,10 +22,10 @@ public class VitPot extends Pot{
 		image = Toolkit.getDefaultToolkit().createImage("src/Pots/VitPot.png");
 		initPot();
 	}
-	
-	
-	/** Use Pot fuction
-	 * Player gains the stats of this pot
+
+	/**
+	 * Use Pot fuction Player gains the stats of this pot
+	 * 
 	 * @param player to use pot on
 	 */
 	public void usePot(Player player) {
@@ -29,7 +33,9 @@ public class VitPot extends Pot{
 			player.increaseVit(1);
 		}
 	}
-	/**Gets description of the pot
+
+	/**
+	 * Gets description of the pot
 	 */
 	public String getInfo() {
 		return "Increase player vitality by 1";
