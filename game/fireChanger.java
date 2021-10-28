@@ -1,10 +1,6 @@
 package game;
 
-import java.awt.MouseInfo;
-import java.awt.geom.Point2D;
 import java.util.TimerTask;
-
-import javax.swing.JFrame;
 
 import sprite.Player;
 
@@ -17,8 +13,6 @@ import sprite.Player;
 public class fireChanger extends TimerTask {
 
 	private Player player;
-	private JFrame jFrame;
-
 	/**
 	 * Constructor
 	 * 
@@ -27,7 +21,7 @@ public class fireChanger extends TimerTask {
 	 */
 	public fireChanger(Player player, Board board) {
 		this.player = player;
-		jFrame = board.getJFrame();
+		board.getJFrame();
 	}
 
 	/**

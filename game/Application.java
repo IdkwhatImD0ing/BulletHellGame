@@ -1,10 +1,6 @@
 package game;
 
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
 import javax.swing.JFrame;
 
 /**

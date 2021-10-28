@@ -1,11 +1,5 @@
 package game;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.util.Random;
-
-import java.lang.Math;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -20,21 +14,31 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.geom.Point2D;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import bags.Bag;
-import enemies.*;
+import enemies.Bes;
+import enemies.Enemy;
+import enemies.Geb;
+import enemies.Medusa;
+import enemies.Nut;
+import enemies.ZombieArcher;
+import enemies.ZombieKing;
+import enemies.ZombieMage;
 import equipment.Item;
-import pots.Pot;
 import sprite.Player;
 import sprite.Projectile;
 import sprite.Sprite;
@@ -49,6 +53,7 @@ import sprite.Wizard;
 public class Board extends JPanel implements ActionListener {
 
 	private Timer timer;
+	private Thread musicThread;
 	private Player player;
 	private final int DELAY = 10;
 	private Image backgroundImage;
@@ -95,6 +100,13 @@ public class Board extends JPanel implements ActionListener {
 	 * 
 	 */
 	private void initBoard() {
+		try {
+			musicThread = new MusicPlayer("src/Sounds/soundtrack3.wav");
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		}
+		musicThread.start();
+
 		setBounds(0, 0, 1620, 1080);
 		addKeyListener(new TAdapter());
 		addMouseListener(new MAdapter());
@@ -839,7 +851,6 @@ public class Board extends JPanel implements ActionListener {
 		 */
 		@Override
 		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
 			player.mousePressed(e);
 		}
 

@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.TimerTask;
