@@ -3,7 +3,7 @@ Basically a rudimentary clone of the game Realm of the Mad God coded in java.
 Go to the doc/overview-summary.html for detailed documentation of this project
 
 Known Bugs:
-Items do not show descriptions when hoving over
+Fire rate when clicking fast
 
 Planned Features:
 Status Effects
