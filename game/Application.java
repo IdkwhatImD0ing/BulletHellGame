@@ -13,6 +13,7 @@ import javax.swing.JFrame;
  */
 public class Application extends JFrame {
 	
+	
 	private int dimensionX = 1920;
 	private int dimensionY = 1080;
 	public TitleScreen menu;
