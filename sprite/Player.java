@@ -167,13 +167,13 @@ public class Player extends Sprite {
 		} else if (moveRight) {
 			loadImage(movingRightImage);
 			if (getX() < 1620 - getWidth()) {
-				x += 1.5 + ((double) speed) / 40.0;
+				x += 1.5 + ((double) speed) / 20.0;
 			}
 
 		} else if (moveLeft) {
 			loadImage(movingLeftImage);
 			if (getX() > 0) {
-				x -= 1.5 + ((double) speed) / 40.0;
+				x -= 1.5 + ((double) speed) / 20.0;
 			}
 
 		}
@@ -189,7 +189,7 @@ public class Player extends Sprite {
 				loadImage(movingUpImage);
 			}
 			if (getY() > 0) {
-				y -= 1.5 + ((double) speed) / 40.0;
+				y -= 1.5 + ((double) speed) / 20.0;
 			}
 		} else if (moveDown) {
 			if (moveLeft) {
@@ -200,7 +200,7 @@ public class Player extends Sprite {
 				loadImage(movingDownImage);
 			}
 			if (getY() < 1080 - getHeight()) {
-				y += 1.5 + ((double) speed) / 40.0;
+				y += 1.5 + ((double) speed) / 20.0;
 			}
 
 		}
