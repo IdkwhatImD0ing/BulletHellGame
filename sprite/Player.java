@@ -944,7 +944,7 @@ public class Player extends Sprite {
 	 * 
 	 * @return the equipment max
 	 */
-	public Map getEquipment() {
+	public Map<String, Item> getEquipment() {
 		return equipment;
 	}
 

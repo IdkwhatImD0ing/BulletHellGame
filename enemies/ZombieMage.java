@@ -31,7 +31,6 @@ public class ZombieMage extends Enemy {
 		timer = new Timer();
 		isTimerOn = false;
 		rand = new Random();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

@@ -2,8 +2,6 @@ package equipment;
 
 import java.awt.Image;
 
-import game.Board;
-import pots.AtkPot;
 import sprite.Player;
 import sprite.Sprite;
 

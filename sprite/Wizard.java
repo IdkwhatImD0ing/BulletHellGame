@@ -3,7 +3,6 @@ package sprite;
 import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
-import java.util.HashMap;
 
 import equipment.Item;
 import equipment.T1HpRing;

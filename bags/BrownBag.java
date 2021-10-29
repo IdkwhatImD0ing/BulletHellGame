@@ -1,6 +1,5 @@
 package bags;
 
-import bags.Bag;
 import game.Board;
 /**BrownBag class, contains dropped items or health/mp pots
  * @author Bill Zhang

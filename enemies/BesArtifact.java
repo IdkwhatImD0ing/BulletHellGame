@@ -21,7 +21,6 @@ import sprite.Projectile;
  */
 public class BesArtifact extends Enemy {
 
-	private final double ANGLE = Math.PI / 6.0;
 	private Random rand;
 
 	private Timer timer;
@@ -40,7 +39,6 @@ public class BesArtifact extends Enemy {
 		timer = new Timer();
 		isTimerOn = false;
 		rand = new Random();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

@@ -2,7 +2,6 @@ package enemies;
 
 import java.awt.Point;
 import java.awt.geom.Point2D;
-import java.lang.annotation.Target;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,9 +10,29 @@ import bags.Bag;
 import bags.BlueBag;
 import bags.CyanBag;
 import bags.WhiteBag;
-import equipment.*;
+import equipment.T2AtkRing;
+import equipment.T2DefRing;
+import equipment.T2DexRing;
+import equipment.T2HpRing;
+import equipment.T2ManaRing;
+import equipment.T2Robe;
+import equipment.T2SpeedRing;
+import equipment.T2Spell;
+import equipment.T2Staff;
+import equipment.T2VitRing;
+import equipment.T2WisRing;
+import equipment.T3AtkRing;
+import equipment.T3DefRing;
+import equipment.T3DexRing;
+import equipment.T3HpRing;
+import equipment.T3ManaRing;
+import equipment.T3Robe;
+import equipment.T3SpeedRing;
+import equipment.T3Spell;
+import equipment.T3Staff;
+import equipment.T3VitRing;
+import equipment.T3WisRing;
 import game.Board;
-import game.enemyCanFire;
 import pots.AtkPot;
 import pots.DefPot;
 import pots.DexPot;
@@ -66,14 +85,12 @@ public class Geb extends Enemy {
 				board.getEnemies().add(new GebArtifact((int) currentX + 15, (int) currentY + 15, targetPlayer, board));
 				board.getEnemies().add(new GebArtifact((int) currentX - 15, (int) currentY + 15, targetPlayer, board));
 				board.getEnemies().add(new GebArtifact((int) currentX, (int) currentY - 21, targetPlayer, board));
-				// TODO Auto-generated method stub
 
 			}
 		}, 0, 10000);
 		isTimerOn = false;
 		rand = new Random();
 		point = new Point();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

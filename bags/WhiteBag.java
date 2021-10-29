@@ -1,6 +1,5 @@
 package bags;
 
-import bags.Bag;
 import game.Board;
 
 /**

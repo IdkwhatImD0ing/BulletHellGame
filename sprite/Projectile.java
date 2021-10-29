@@ -2,8 +2,6 @@ package sprite;
 
 import java.awt.Image;
 
-import game.Board;
-
 /**
  * Projectile class
  * 

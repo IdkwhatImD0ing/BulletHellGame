@@ -1,6 +1,5 @@
 package equipment;
 
-import game.Board;
 import sprite.Player;
 
 public class T1HpRing extends Item {

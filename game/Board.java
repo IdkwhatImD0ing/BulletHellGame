@@ -101,7 +101,12 @@ public class Board extends JPanel implements ActionListener {
 	 */
 	private void initBoard() {
 		try {
-			musicThread = new MusicPlayer("src/Sounds/soundtrack3.wav");
+			String musicString = "src/Sounds/soundtrack";
+			Random rand = new Random();
+			int randomInt = rand.nextInt(6);
+			musicString += String.valueOf(randomInt);
+			musicString += ".wav";
+			musicThread = new MusicPlayer(musicString);
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 			e.printStackTrace();
 		}

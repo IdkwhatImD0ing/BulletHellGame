@@ -2,7 +2,6 @@ package equipment;
 
 import java.awt.Toolkit;
 
-import game.Board;
 import sprite.Player;
 
 public class T3Spell extends Item {
