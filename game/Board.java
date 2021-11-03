@@ -791,6 +791,9 @@ public class Board extends JPanel implements ActionListener {
 		for (int i = 0; i < playerProjectiles.size(); i++) {
 
 			Projectile p = playerProjectiles.get(i);
+			if (!p.isVisible()) {
+				continue;
+			}
 			Rectangle projectileBound = p.getBounds();
 			for (Enemy enemy : enemies) {
 				Rectangle enemyBound = enemy.getBounds();
