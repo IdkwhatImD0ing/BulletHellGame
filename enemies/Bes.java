@@ -302,7 +302,11 @@ public class Bes extends Enemy {
 		} else if (rng4 < 1) {
 			loot.add(new ManaPot(board));
 		}
-		super.die();
+		dieWithoutFire();
+		if (isTimerOn) {
+			timer.cancel();
+			timer2.cancel();
+		}
 		timer3.cancel();
 		board.getBags().add(loot);
 

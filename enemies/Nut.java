@@ -54,7 +54,6 @@ public class Nut extends Enemy {
 	private Timer timer;
 	private Timer timer2;
 	private Timer timer3;
-	private boolean isTimerOn;
 	private Point point;
 	private Point point2;
 
@@ -123,6 +122,7 @@ public class Nut extends Enemy {
 		} else {
 			if (isTimerOn) {
 				timer.cancel();
+				timer2.cancel();
 				isTimerOn = false;
 			}
 		}
@@ -199,7 +199,10 @@ public class Nut extends Enemy {
 		if (!visible) {
 			return;
 		}
-
+		if (isTimerOn) {
+			timer2.cancel();
+			timer.cancel();
+		}
 		getTarget().gainExp(1000);
 		double rng;
 		Bag loot = new BlueBag(x, y, board);
@@ -288,7 +291,7 @@ public class Nut extends Enemy {
 		} else if (rng4 < 1) {
 			loot.add(new ManaPot(board));
 		}
-		super.die();
+		dieWithoutFire();
 		timer3.cancel();
 		board.getBags().add(loot);
 

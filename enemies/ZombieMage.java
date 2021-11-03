@@ -17,9 +17,6 @@ public class ZombieMage extends Enemy {
 
 	private Random rand;
 
-	private Timer timer;
-	private boolean isTimerOn;
-
 	/**
 	 * @param x      position
 	 * @param y      position
@@ -28,7 +25,7 @@ public class ZombieMage extends Enemy {
 	 */
 	public ZombieMage(int x, int y, Player player, Board board) {
 		super(x, y, player, "src/Enemies/Zombie/ZombieMage.png", 1.2, 100 + 10 * board.getRound(), 5, board);
-		timer = new Timer();
+		canFire = new Timer();
 		isTimerOn = false;
 		rand = new Random();
 	}
@@ -41,13 +38,13 @@ public class ZombieMage extends Enemy {
 		super.move();
 		if (Math.sqrt(Math.pow(getDistanceX(), 2) + Math.pow(getDistanceY(), 2)) <= 1000) {
 			if (!isTimerOn) {
-				timer = new Timer();
-				timer.schedule(new enemyCanFire(this, getTarget(), board), 0, 500);
+				canFire = new Timer();
+				canFire.schedule(new enemyCanFire(this, getTarget(), board), 0, 500);
 				isTimerOn = true;
 			}
 		} else {
 			if (isTimerOn) {
-				timer.cancel();
+				canFire.cancel();
 				isTimerOn = false;
 			}
 		}

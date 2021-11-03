@@ -23,9 +23,6 @@ public class GebArtifact extends Enemy {
 
 	private Random rand;
 
-	private Timer timer;
-	private boolean isTimerOn;
-
 	/**
 	 * @param x      position
 	 * @param y      position
@@ -34,7 +31,7 @@ public class GebArtifact extends Enemy {
 	 */
 	public GebArtifact(int x, int y, Player player, Board board) {
 		super(x, y, player, "src/Enemies/Boss/GebArtifact.png", 2, 2000, 5, board);
-		timer = new Timer();
+		canFire = new Timer();
 		isTimerOn = false;
 		rand = new Random();
 	}
@@ -47,13 +44,13 @@ public class GebArtifact extends Enemy {
 		super.move();
 		if (Math.sqrt(Math.pow(getDistanceX(), 2) + Math.pow(getDistanceY(), 2)) <= 1000) {
 			if (!isTimerOn) {
-				timer = new Timer();
-				timer.schedule(new enemyCanFire(this, getTarget(), board), 0, 300);
+				canFire = new Timer();
+				canFire.schedule(new enemyCanFire(this, getTarget(), board), 0, 300);
 				isTimerOn = true;
 			}
 		} else {
 			if (isTimerOn) {
-				timer.cancel();
+				canFire.cancel();
 				isTimerOn = false;
 			}
 		}

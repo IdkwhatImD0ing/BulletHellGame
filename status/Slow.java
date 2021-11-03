@@ -16,7 +16,6 @@ public class Slow extends Status {
 	}
 
 	public void removeStatus(Player player) {
-		decreasedSpeed = player.getSpeed() / 2;
 		player.increaseSpd(decreasedSpeed);
 	}
 

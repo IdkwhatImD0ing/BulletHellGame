@@ -20,6 +20,7 @@ import game.regenStats;
 import pots.HealthPot;
 import pots.MpPot;
 import pots.Pot;
+import status.Status;
 
 /**
  * Base class for players
@@ -86,6 +87,7 @@ public class Player extends Sprite {
 	public Sprite[] inventory;
 
 	private ArrayList<Damage> damageList;
+	//private ArrayList<Status> statusEffects;
 	private Timer timer;
 
 	/**
@@ -120,6 +122,7 @@ public class Player extends Sprite {
 		movingUpImage = movingUp;
 		movingDownImage = movingDown;
 		damageList = new ArrayList<Damage>();
+		//statusEffects = new ArrayList<Status>();
 		initPlayer();
 		fireChanger = new Timer();
 		fireChanger.schedule(new fireChanger(this, board), 0, 400 - (dexterity * 4));
