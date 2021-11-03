@@ -697,6 +697,7 @@ public class Board extends JPanel implements ActionListener {
 			if (projectile != null && projectile.isVisible()) {
 
 				projectile.move();
+
 			} else {
 
 				playerProjectiles.remove(i);
