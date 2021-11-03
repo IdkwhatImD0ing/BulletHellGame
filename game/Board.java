@@ -75,6 +75,8 @@ public class Board extends JPanel implements ActionListener {
 	private Thread collisionChecker;
 	private Thread projectileChecker;
 
+	private int testVariable;
+
 	/**
 	 * Constructor
 	 * 
