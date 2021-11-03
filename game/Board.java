@@ -72,6 +72,9 @@ public class Board extends JPanel implements ActionListener {
 
 	private Bag mainBag;
 
+	private Thread collisionChecker;
+	private Thread projectileChecker;
+
 	/**
 	 * Constructor
 	 * 
@@ -84,13 +87,13 @@ public class Board extends JPanel implements ActionListener {
 		boardX = x;
 		boardY = y;
 		jFrame = frame;
-		playerProjectiles = new ArrayList<>();
-		enemyProjectiles = new ArrayList<>();
+		playerProjectiles = new ArrayList<>(50);
+		enemyProjectiles = new ArrayList<>(200);
 		enemyMap = new HashMap<>();
 		enemyMap.put("ZombieKing", 0);
 		enemyMap.put("Medusa", -1);
 		mainBag = null;
-		bags = new ArrayList<>();
+		bags = new ArrayList<>(30);
 		initBoard();
 		backgroundImage = Toolkit.getDefaultToolkit().createImage("Map.png");
 	}
@@ -103,7 +106,7 @@ public class Board extends JPanel implements ActionListener {
 		try {
 			String musicString = "src/Sounds/soundtrack";
 			Random rand = new Random();
-			int randomInt = rand.nextInt(6);
+			int randomInt = rand.nextInt(5) + 1;
 			musicString += String.valueOf(randomInt);
 			musicString += ".wav";
 			musicThread = new MusicPlayer(musicString);
@@ -118,6 +121,8 @@ public class Board extends JPanel implements ActionListener {
 
 		setFocusable(true);
 		inGame = true;
+
+		
 
 		player = new Wizard(boardX / 2, boardY / 2, this);
 
@@ -675,10 +680,14 @@ public class Board extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (inGame) {
 			updateEnemies();
+			//projectileChecker = new Thread(new checkProjectiles(this));
+			//projectileChecker.start();
 			updateProjectiles();
 			updateBags();
 			updateCharacter();
 			checkCollisions();
+			//collisionChecker = new Thread(new checkCollision(this));
+			//collisionChecker.start();
 			repaint();
 		}
 
@@ -688,7 +697,7 @@ public class Board extends JPanel implements ActionListener {
 	 * Updates the projectiles on screen
 	 * 
 	 */
-	private void updateProjectiles() {
+	public void updateProjectiles() {
 
 		for (int i = 0; i < playerProjectiles.size(); i++) {
 
@@ -941,6 +950,10 @@ public class Board extends JPanel implements ActionListener {
 	 */
 	public List<Enemy> getEnemies() {
 		return enemies;
+	}
+
+	public boolean ingame(){
+		return inGame;
 	}
 
 }
