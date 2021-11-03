@@ -90,7 +90,7 @@ public class Board extends JPanel implements ActionListener {
 		boardY = y;
 		jFrame = frame;
 		playerProjectiles = new ArrayList<>(50);
-		enemyProjectiles = new ArrayList<>(200);
+		enemyProjectiles = new ArrayList<>(500);
 		enemyMap = new HashMap<>();
 		enemyMap.put("ZombieKing", 0);
 		enemyMap.put("Medusa", -1);
@@ -123,8 +123,7 @@ public class Board extends JPanel implements ActionListener {
 
 		setFocusable(true);
 		inGame = true;
-
-		
+		setDoubleBuffered(true);
 
 		player = new Wizard(boardX / 2, boardY / 2, this);
 
@@ -682,14 +681,14 @@ public class Board extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (inGame) {
 			updateEnemies();
-			//projectileChecker = new Thread(new checkProjectiles(this));
-			//projectileChecker.start();
+			// projectileChecker = new Thread(new checkProjectiles(this));
+			// projectileChecker.start();
 			updateProjectiles();
 			updateBags();
 			updateCharacter();
 			checkCollisions();
-			//collisionChecker = new Thread(new checkCollision(this));
-			//collisionChecker.start();
+			// collisionChecker = new Thread(new checkCollision(this));
+			// collisionChecker.start();
 			repaint();
 		}
 
@@ -786,10 +785,12 @@ public class Board extends JPanel implements ActionListener {
 	public void checkCollisions() {
 		Rectangle playerBounds = player.getBounds();
 
-		List<Projectile> playerProjectilesCopy = new ArrayList<>(playerProjectiles);
-		List<Projectile> enemyProjectilesCopy = new ArrayList<>(enemyProjectiles);
+		// List<Projectile> playerProjectilesCopy = new ArrayList<>(playerProjectiles);
+		// List<Projectile> enemyProjectilesCopy = new ArrayList<>(enemyProjectiles);
 
-		for (Projectile p : playerProjectilesCopy) {
+		for (int i = 0; i < playerProjectiles.size(); i++) {
+
+			Projectile p = playerProjectiles.get(i);
 			Rectangle projectileBound = p.getBounds();
 			for (Enemy enemy : enemies) {
 				Rectangle enemyBound = enemy.getBounds();
@@ -803,7 +804,9 @@ public class Board extends JPanel implements ActionListener {
 			}
 		}
 
-		for (Projectile p : enemyProjectilesCopy) {
+		for (int i = 0; i < enemyProjectiles.size(); i++) {
+
+			Projectile p = enemyProjectiles.get(i);
 			Rectangle projectileBound = p.getBounds();
 			if (playerBounds.intersects(projectileBound)) {
 				p.setVisible(false);
@@ -954,7 +957,7 @@ public class Board extends JPanel implements ActionListener {
 		return enemies;
 	}
 
-	public boolean ingame(){
+	public boolean ingame() {
 		return inGame;
 	}
 
