@@ -20,10 +20,10 @@ Player moves faster diagonally than in straight lines up and down
 Game lags when multiple enemies or bullets on screen
 
 ## Planned Features:
-Status Effects
-Bigger Map Sizes
-Moving Camera
-Dungeons
-Settings page for sounds
-Sounds for hit death etc
-Make readme look pretty
+- Status Effects
+- Bigger Map Sizes
+- Moving Camera
+- Dungeons
+- Settings page for sounds
+- Sounds for hit death etc
+
