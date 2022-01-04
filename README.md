@@ -15,9 +15,9 @@ Go to the doc/overview-summary.html for detailed documentation of this project
  -  `Left click` Drop Item
 
 ## Known Bugs:
-Hovering over items does not show descriptions
-Player moves faster diagonally than in straight lines up and down
-Game lags when multiple enemies or bullets on screen
+- Hovering over items does not show descriptions
+- Player moves faster diagonally than in straight lines up and down
+- Game lags when multiple enemies or bullets on screen
 
 ## Planned Features:
 - Status Effects
