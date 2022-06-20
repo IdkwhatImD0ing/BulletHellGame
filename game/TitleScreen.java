@@ -95,6 +95,8 @@ public class TitleScreen extends JPanel implements ActionListener {
 		g2d.drawString("Dex increases firing rate", 130, 550);
 		g2d.drawString("Vit increase hp regen", 130, 750);
 		g2d.drawString("Wis increases mana regen", 130, 800);
+		g2d.drawString("F = Use Health Pot (if available)", 130, 850);
+		g2d.drawString("V = Use Mana Pot (if available)", 130, 900);
 
 		g2d.drawString("Blue Bags contains pots", 1550, 200);
 		g2d.drawString("Pots permanently increase stats", 1550, 225);

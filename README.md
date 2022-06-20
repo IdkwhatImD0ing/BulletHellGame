@@ -1,5 +1,8 @@
 # BulletHellGame
 
+## Demo Link
+https://www.youtube.com/watch?v=aaFkC9SpMhk
+
 ## Description
 
 Basically a rudimentary clone of the game Realm of the Mad God coded in java.
@@ -18,6 +21,8 @@ Go to the doc/overview-summary.html for detailed documentation of this project
 - Hovering over items does not show descriptions
 - Player moves faster diagonally than in straight lines up and down
 - Game lags when multiple enemies or bullets on screen
+- Data Races allow for stats to go over cap
+- Boss damage text offeset
 
 ## Planned Features:
 - Status Effects
