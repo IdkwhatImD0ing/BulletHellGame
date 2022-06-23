@@ -1206,7 +1206,6 @@ public class Player extends Sprite {
 			}
 			if (maxHealth < maximumHealth) {
 				increaseMaxMana(15);
-				;
 
 			}
 			maxHealth();
